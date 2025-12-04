@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { FaYoutube } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
@@ -11,7 +11,7 @@ export default function FooterSection() {
         
         {/* Left Section - Mailing List */}
         <div className="bg-[#3A2D18] p-10 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl font-semibold mb-4">d
             Join our mailing list for updates
           </h2>
 
