@@ -10,7 +10,7 @@ import Navigation from "./Navigation";
 function TopBar() {
   return (
     <header className="bg-[#2F2E2E]">
-        <div className="flex flex-col lg:flex-row justify-around gap-5 lg:gap-0 p-10">
+        <div className="flex flex-col lg:flex-row justify-around gap-5 lg:gap-0 ">
 
             {/* Left Section */}
             <div className="text-center lg:text-left">
@@ -47,7 +47,7 @@ function TopBar() {
             </div>
 
         </div>
-        <div className="text-primary">
+        <div>
            <Navigation/>
         </div>
     </header>

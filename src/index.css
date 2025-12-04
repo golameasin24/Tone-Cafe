@@ -16,10 +16,26 @@
 
 @layer utilities {
 
-  .word-spacing {
+  .letter-spacing {
   
      letter-spacing: 5px;
   }
+
+
+}
+
+.my-container {
+
+  width: 1280px;
+}
+
+@layer utilities {
+
+  .word-spacing {
+  
+     word-spacing: 2px;
+  }
+
 
 }
 

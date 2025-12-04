@@ -50,10 +50,12 @@ function SecondHeroSection() {
   <button
     className="
       bg-primary 
-      px-10 py-2 
+      px-20 py-2 
       text-white 
       hover:text-primary hover:bg-white 
       transition
+      mb-3 
+      lg:md-0
     "
   >
     Sign up
