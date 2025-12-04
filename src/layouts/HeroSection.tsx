@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 
 function HeroSection() {
   return (
@@ -7,7 +7,7 @@ function HeroSection() {
       style={{ backgroundImage: "url('/img/img.png')" }}
     >
       <h1 className="text-justify text-[20px] md:text-2xl lg:text-5xl font-bold text-primary p-4 font-cursive">
-          WINE IS VERY HERMFUL FOR OUR BODY
+           THE WINE IS VERY HERMFUL FOR OUR BODY
       </h1>
     </div>
   );
