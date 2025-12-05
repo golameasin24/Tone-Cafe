@@ -1,23 +1,19 @@
 
 import FooterSection from "./layouts/Footer";
-import GalarySection from "./layouts/GalarySection";
-import HeroSection from "./layouts/HeroSection";
-import SecondHeroSection from "./layouts/SecondHeroSection";
-import ToneCafe from "./layouts/ToneCafe";
-import TopBar from "./layouts/TopBar";
+import Navigation from "./layouts/Navigation";
 
-function App() {
+import TopBar from "./layouts/TopBar";
+import { Outlet } from 'react-router'
+function AppLaout() {
   return (
     <>
        <TopBar/>
-       <HeroSection/>
-       <SecondHeroSection/>
-       <GalarySection/>
-       <ToneCafe/>
+        <Navigation/>
+            <Outlet />
+    
        <FooterSection/>
-  
     </>
   );
 }
 
-export default App;
+export default AppLaout;

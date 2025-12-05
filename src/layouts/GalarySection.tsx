@@ -12,16 +12,34 @@ function GalarySection() {
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   // Keyboard Navigation
-  useEffect(() => {
-    if (!open) return;
-    function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
-      if (e.key === "ArrowRight") setIndex((i) => (i + 1) % IMAGES.length);
-      if (e.key === "ArrowLeft") setIndex((i) => (i - 1 + IMAGES.length) % IMAGES.length);
-    }
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
+// Keyboard Navigation
+useEffect(() => {
+  if (!open) return;
+
+  function onKey(e: KeyboardEvent) {
+    if (e.key === "Escape") setOpen(false);
+    if (e.key === "ArrowRight") setIndex((i) => (i + 1) % IMAGES.length);
+    if (e.key === "ArrowLeft") setIndex((i) => (i - 1 + IMAGES.length) % IMAGES.length);
+  }
+
+  window.addEventListener("keydown", onKey);
+  return () => window.removeEventListener("keydown", onKey);
+}, [open]);
+
+// Auto Slide on Mobile
+useEffect(() => {
+  if (!open) return;
+
+  const isMobile = window.innerWidth <= 768;
+  if (!isMobile) return;
+
+  const interval = setInterval(() => {
+    setIndex((i) => (i + 1) % IMAGES.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [open]);
+
 
   // Click outside (mouse)
   function onBackdropClick(e: React.MouseEvent<HTMLDivElement>) {
@@ -53,7 +71,7 @@ function GalarySection() {
 
   return (
     <div
-      className="p-4 bg-cover bg-center"
+      className="p-1 bg-cover bg-center"
       style={{ backgroundImage: "url('/img/bg-black.avif')" }}
     >
       <h4 className="text-4xl md:text-5xl font-custom text-center text-primary py-6">
@@ -65,7 +83,7 @@ function GalarySection() {
         {IMAGES.map((img, i) => (
           <button
             key={img.src}
-            onMouseOver={() => {
+            onClick={() => {
               setIndex(i);
               setOpen(true);
             }}
@@ -88,7 +106,7 @@ function GalarySection() {
           ref={modalRef}
           onMouseDown={onBackdropClick}
           onTouchStart={onBackdropTouch}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+          className="fixed inset-0 z-50 flex items-center justify-center   "
         >
           <div
             className="relative w-full max-w-5xl mx-4 md:mx-8"
@@ -105,7 +123,7 @@ function GalarySection() {
 
             {/* Prev */}
             <button
-              onMouseOver={() => setIndex((i) => (i - 1 + IMAGES.length) % IMAGES.length)}
+              onClick={() => setIndex((i) => (i - 1 + IMAGES.length) % IMAGES.length)}
               className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white rounded-full p-3"
             >
               ‹
@@ -113,7 +131,7 @@ function GalarySection() {
 
             {/* Next */}
             <button
-              onMouseOver={() => setIndex((i) => (i + 1) % IMAGES.length)}
+              onClick={() => setIndex((i) => (i + 1) % IMAGES.length)}
               className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/60 text-white rounded-full p-3"
             >
               ›
@@ -121,7 +139,7 @@ function GalarySection() {
 
             {/* Image */}
             <div className="rounded-lg overflow-hidden">
-              <div className="w-full h-[60vh] md:h-[75vh] flex items-center justify-center backdrop-blur-sm brightness-50">
+              <div className="w-full h-[20vh] md:h-[75vh] flex items-center justify-center backdrop-blur-sm brightness-50">
                 <img
                   src={IMAGES[index].src}
                   alt={IMAGES[index].alt}
@@ -140,7 +158,7 @@ function GalarySection() {
                     {IMAGES.map((img, i) => (
                       <button
                         key={img.src}
-                        onMouseOver={() => setIndex(i)}
+                        onClick={() => setIndex(i)}
                         className={`w-12 h-12 rounded-md overflow-hidden border-2 ${
                           i === index ? "border-primary" : "border-transparent"
                         }`}
@@ -165,13 +183,13 @@ function GalarySection() {
               </div>
 
               {/* Mobile indicators */}
-              <div className="sm:hidden flex justify-center gap-2 py-2 bg-white/90">
+              <div className="sm:hidden flex justify-center ">
                 {IMAGES.map((_, i) => (
                   <button
                     key={i}
-                    onMouseOver={() => setIndex(i)}
+                    onClick={() => setIndex(i)}
                     className={`w-2 h-2 rounded-full ${
-                      i === index ? "bg-primary" : "bg-gray-300"
+                      i === index ? "bg-primary" : ""
                     }`}
                   />
                 ))}
