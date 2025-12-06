@@ -48,7 +48,7 @@ function Navigation() {
         >
           <li><Link to="/" className="block px-4 py-2 hover:text-primary duration-200">Home</Link></li>
           <li><Link to="/menu" className="block px-4 py-2 hover:text-primary duration-200">Menu</Link></li>
-          <li><Link to="#" className="block px-4 py-2 hover:text-primary duration-200">Contact Us</Link></li>
+          <li><Link to="/contact" className="block px-4 py-2 hover:text-primary duration-200">Contact Us</Link></li>
           <li><Link to="#" className="block px-4 py-2 hover:text-primary duration-200">Events</Link></li>
           <li><Link to="#" className="block px-4 py-2 hover:text-primary duration-200">Shop</Link></li>
         </ul>
